@@ -15,13 +15,13 @@ export class ResourcesComponent {
   id = signal(1);
 
   user = resource({
-    request: () => ({ id: this.id() }),
-    loader: ({ request }) => this.fetchUser(request.id)
+    params: () => ({ id: this.id() }),
+    loader: ({ params }) => this.fetchUser(params.id)
   });
 
   userRx = rxResource({
-    request: () => ({ id: this.id() }),
-    loader: ({ request }) => this.getUser(request.id)
+    params: () => ({ id: this.id() }),
+    stream: ({ params }) => this.getUser(params.id)
   });
 
   userHttp = httpResource<{}>(() => `/api/users/${this.id()}`);
