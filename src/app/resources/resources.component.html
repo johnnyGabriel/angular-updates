@@ -1,0 +1,33 @@
+<h1>resource, rxResource, httpResource:</h1>
+
+<p>UserId: {{ id() }}</p>
+
+<h3>resource:</h3>
+@if (user.hasValue()) {
+    <p>User data: {{ user.value() | json }}</p>
+} @else if (user.error()) {
+    <p>Error: {{ user.error() | json }}</p>
+} @else if (user.isLoading()) {
+    <p>Loading...</p>
+} 
+
+<h3>rxResource:</h3>
+@if (userRx.hasValue()) {
+    <p>UserRx data: {{ userRx.value() | json }}</p>
+} @else if (userRx.error()) {
+    <p>Error: {{ userRx.error() | json }}</p>
+} @else if (userRx.isLoading()) {
+    <p>Loading...</p>
+} 
+
+<h3>httpResource:</h3>
+@if (userHttp.hasValue()) {
+    <p>UserRx data: {{ userHttp.value() | json }}</p>
+} @else if (userHttp.error()) {
+    <p>Error: {{ userHttp.error() | json }}</p>
+} @else if (userHttp.isLoading()) {
+    <p>Loading...</p>
+} 
+
+<button (click)="user.reload(); userRx.reload(); userHttp.reload()">Refresh</button>
+<button (click)="changeId()">Change ID</button>

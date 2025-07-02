@@ -1,0 +1,21 @@
+.scroll-box {
+    width: 250px; 
+    height: 100px; 
+    overflow: scroll;
+    border: 1px solid gray;
+    background: #ececff;
+}
+
+.slot {
+    border: 1px solid #ff0000;
+    background: #d0d0ff;
+    width: 400px;
+    padding: 0 1rem;
+}
+
+.clickable {
+    cursor: pointer;
+    color: #0000ff;
+    text-decoration: underline;
+    width: max-content;
+}

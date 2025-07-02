@@ -1,0 +1,177 @@
+<h1>Deferrable Views:</h1>
+
+<input type="radio" name="deferType" (change)="deferTemplate.set('loadingOnHover')" checked />On hover
+<input type="radio" name="deferType" (change)="deferTemplate.set('loadingOnViewport')"/>On viewport
+<input type="radio" name="deferType" (change)="deferTemplate.set('loadingOnInteraction')"/>On interaction
+<input type="radio" name="deferType" (change)="deferTemplate.set('loadingOnIdle')"/>On idle
+<input type="radio" name="deferType" (change)="deferTemplate.set('loadingOnImmediate')"/>On immediate
+<input type="radio" name="deferType" (change)="deferTemplate.set('loadingOnTimer')"/>On timer
+<input type="radio" name="deferType" (change)="deferTemplate.set('loadingOnWhen')"/>On when condition
+
+<section>
+    @switch (deferTemplate()) {
+        @case ('loadingOnHover') {
+            <ng-container *ngTemplateOutlet="loadingOnHover"></ng-container>
+        }
+        @case ('loadingOnViewport') {
+            <ng-container *ngTemplateOutlet="loadingOnViewport"></ng-container>
+        }
+        @case ('loadingOnInteraction') {
+            <ng-container *ngTemplateOutlet="loadingOnInteraction"></ng-container>
+        }
+        @case ('loadingOnIdle') {
+            <ng-container *ngTemplateOutlet="loadingOnIdle"></ng-container>
+        }
+        @case ('loadingOnImmediate') {
+            <ng-container *ngTemplateOutlet="loadingOnImmediate"></ng-container>
+        }
+        @case ('loadingOnTimer') {
+            <ng-container *ngTemplateOutlet="loadingOnTimer"></ng-container>
+        }
+        @case ('loadingOnWhen') {
+            <ng-container *ngTemplateOutlet="loadingOnWhen"></ng-container>
+        }
+    }
+</section>
+
+<ng-template #loadingOnHover>
+    <h3>Loading on hover:</h3>
+
+    <h4>Using specified content:</h4>
+    
+    <div class="slot">
+        @defer (on hover) {
+            <app-example></app-example>
+        } @loading (minimum 1s) {
+            <p>Loading...</p>
+        } @error {
+            <p>Error loading content</p>
+        } @placeholder {
+            <p>Hover to load content...</p>
+        }
+    </div>
+
+    <h4>Using template ref:</h4>
+
+    <div class="slot">
+        @defer (on hover(hoverToLoad)) {
+            <app-example></app-example>
+        } @placeholder {
+            <p>Slot to load component</p>
+        }
+    </div>
+
+    <p #hoverToLoad style="width: 300px;">Hover here to load content up</p>
+
+    
+</ng-template>
+
+<ng-template #loadingOnViewport>
+    <h3>Loading on viewport:</h3>
+
+    <h4>Using template ref:</h4>
+
+    <div class="slot">
+        @defer (on viewport(scrollEnd)) {
+            <app-example></app-example>
+        } @placeholder {
+            <p>Scroll the box below to load component template here...</p>
+        }
+    </div>
+
+    <br />
+
+    <div class="scroll-box">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente dignissimos labore vel! Deserunt vitae magnam autem quasi aliquid in, sequi sunt distinctio quam velit debitis aperiam minima, tenetur facere cum.</p>
+        <h4 #scrollEnd>This is the scroll end, so let's load the content</h4>
+    </div>
+
+    <h4>Using specified content:</h4>
+
+    <div class="scroll-box">
+        <h4>Scroll this box till the end to load component template there</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente dignissimos labore vel! Deserunt vitae magnam autem quasi aliquid in, sequi sunt distinctio quam velit debitis aperiam minima, tenetur facere cum.</p>
+        <h4>This is the scroll end, so the component template has loaded</h4>
+        @defer (on viewport) {
+            <app-example></app-example>
+        } @placeholder {
+            <p>Scroll the box to load content...</p>
+        }
+    </div>
+
+</ng-template>
+
+<ng-template #loadingOnInteraction>
+    <h3>Loading on interaction:</h3>
+
+    <h4>Using specified content:</h4>
+    
+    <div class="slot">
+        @defer (on interaction) {
+            <app-example></app-example>
+        } @placeholder {
+            <p class="clickable">Click to load content...</p>
+        }
+    </div>
+
+    <h4>Using template ref:</h4>
+
+    <div class="slot">
+        @defer (on interaction(interactionToLoad)) {
+            <app-example></app-example>
+        } @placeholder {
+            <p>Slot to load component</p>
+        }
+    </div>
+
+    <p #interactionToLoad class="clickable">Click here to load content up</p>
+    
+</ng-template>
+
+<ng-template #loadingOnIdle>
+    <h3>Loading on idle:</h3>
+
+    <div class="slot">
+        @defer {
+            <app-example></app-example>
+        }
+    </div>
+</ng-template>
+
+<ng-template #loadingOnImmediate>
+    <h3>Loading on immediate:</h3>
+
+    <div class="slot">
+        @defer (on immediate) {
+            <app-example></app-example>
+        }
+    </div>
+</ng-template>
+
+<ng-template #loadingOnTimer>
+    <h3>Loading on timer:</h3>
+
+    <div class="slot">
+        @defer (on timer(1s)) {
+            <app-example></app-example>
+        } @placeholder {
+            <p>Waiting 1 second to load content...</p>
+        }
+    </div>
+</ng-template>
+
+<ng-template #loadingOnWhen>
+    <h3>Loading on when condition:</h3>
+
+    @let counter = counter$ | async;
+
+    <p>Counter: {{ counter }}</p>
+
+    <div class="slot">
+        @defer (when counter === 5) {
+            <app-example></app-example>
+        } @placeholder {
+            <p>Waiting counter to be 5...</p>
+        }
+    </div>
+</ng-template>

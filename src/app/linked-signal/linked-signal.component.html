@@ -1,0 +1,12 @@
+<h1>Linked Signal:</h1>
+
+<p>List items:</p>
+@for (item of list(); track $index) {
+    <input type="radio" name="items" (change)="selectItem($index)">
+        {{ item.name }}
+}
+
+<p>linkedSignal selected: {{ selectedItemLinked().name }}</p>
+<p>signal selected: {{ selectedItem().name }}</p>
+
+<button (click)="update()">Update list items</button>

@@ -1,0 +1,10 @@
+<h1>Model Inputs:</h1>
+<label>
+    Two-way binding input with model inputs: <br>
+    <input 
+        type="text" 
+        [value]="value()" 
+        placeholder="Type something..."
+        (input)="handleInput($event)" />
+</label>
+<button (click)="reset()">click to change input value back to default</button>

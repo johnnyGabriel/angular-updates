@@ -1,0 +1,51 @@
+<h1>Control Flow:</h1>
+
+<section>
+    <h3 class="bg-red">This is a for</h3>
+    <ul>
+        @for (item of list(); track $index) {
+            
+            @if ($first) {
+                <p>This is the first item from a list with {{ $count }} items</p>
+            }
+            
+            @if (item.id === 2) {
+                <li class="bg-red">This is a if condition</li>
+            } @else if (item.id === 5) {
+                <li class="bg-red">This is a else-if</li>
+            } @else {
+                <li>{{ item.name }} ({{ $even ? 'even item' : 'odd item' }})</li>
+            }
+
+             @if ($last) {
+                <p>This is the last item from a list with {{ $count }} items</p>
+            }
+        } @empty {
+            <p>No items found</p>
+        }
+    </ul>
+
+    <h3 class="bg-red">This is a switch</h3>
+    @switch (list().length) {
+        @case (0) {
+            <p>List is empty</p>
+        }
+        @case (1) {
+            <p>List has one item</p>
+        }
+        @default {
+            <p>List has {{ list().length }} items</p>
+        }
+    }
+
+    <button (click)="clean()">clean list</button>
+
+    <h3>This is a template variable</h3>
+
+    @let user = user$ | async;
+
+    @if (user) {
+        <p>User is {{ user }}</p>
+    }
+
+</section>
