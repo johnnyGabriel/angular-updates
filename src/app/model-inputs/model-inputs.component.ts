@@ -4,7 +4,7 @@ import { Component, model } from '@angular/core';
   selector: 'app-model-inputs',
   imports: [],
   templateUrl: './model-inputs.component.html',
-  styleUrl: './model-inputs.component.css'
+  styleUrl: './model-inputs.component.css',
 })
 export class ModelInputsComponent {
   

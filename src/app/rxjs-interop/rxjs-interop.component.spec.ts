@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RxjsInteropComponent } from './rxjs-interop.component';
+import { provideZonelessChangeDetection } from '@angular/core';
 
 describe('RxjsInteropComponent', () => {
   let component: RxjsInteropComponent;
@@ -8,7 +9,8 @@ describe('RxjsInteropComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RxjsInteropComponent]
+      imports: [RxjsInteropComponent],
+      providers: [provideZonelessChangeDetection()]
     })
     .compileComponents();
 

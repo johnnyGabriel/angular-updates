@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SignalQueriesComponent } from './signal-queries.component';
+import { provideZonelessChangeDetection } from '@angular/core';
 
 describe('SignalQueriesComponent', () => {
   let component: SignalQueriesComponent;
@@ -8,7 +9,8 @@ describe('SignalQueriesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SignalQueriesComponent]
+      imports: [SignalQueriesComponent],
+      providers: [provideZonelessChangeDetection()]
     })
     .compileComponents();
 

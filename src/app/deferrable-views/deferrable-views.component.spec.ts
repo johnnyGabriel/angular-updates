@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DeferrableViewsComponent } from './deferrable-views.component';
+import { provideZonelessChangeDetection } from '@angular/core';
 
 describe('DeferrableViewsComponent', () => {
   let component: DeferrableViewsComponent;
@@ -8,7 +9,8 @@ describe('DeferrableViewsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DeferrableViewsComponent]
+      imports: [DeferrableViewsComponent],
+      providers: [provideZonelessChangeDetection()]
     })
     .compileComponents();
 

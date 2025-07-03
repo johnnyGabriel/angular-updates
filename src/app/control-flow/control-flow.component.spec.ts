@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ControlFlowComponent } from './control-flow.component';
+import { provideZonelessChangeDetection } from '@angular/core';
 
 describe('ControlFlowComponent', () => {
   let component: ControlFlowComponent;
@@ -8,7 +9,8 @@ describe('ControlFlowComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ControlFlowComponent]
+      imports: [ControlFlowComponent],
+      providers: [provideZonelessChangeDetection()]
     })
     .compileComponents();
 

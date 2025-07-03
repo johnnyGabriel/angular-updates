@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "test": "ng test --watch false",
+    "wtest": "ng test",
     "serve:ssr:angular-updates": "node dist/angular-updates/server/server.mjs"
   },
   "private": true,
@@ -22,8 +23,7 @@
     "@angular/ssr": "^20.0.5",
     "express": "^4.18.2",
     "rxjs": "~7.8.0",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.15.0"
+    "tslib": "^2.3.0"
   },
   "devDependencies": {
     "@angular/build": "^20.0.5",

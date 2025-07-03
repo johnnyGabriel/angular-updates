@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SignalEffectComponent } from './signal-effect.component';
+import { provideZonelessChangeDetection } from '@angular/core';
 
 describe('SignalEffectComponent', () => {
   let component: SignalEffectComponent;
@@ -8,7 +9,8 @@ describe('SignalEffectComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SignalEffectComponent]
+      imports: [SignalEffectComponent],
+      providers: [provideZonelessChangeDetection()]
     })
     .compileComponents();
 
