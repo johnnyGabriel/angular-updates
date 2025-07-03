@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { StateService } from './state.service';
 
 import { ModelInputsComponent } from "./model-inputs/model-inputs.component";
@@ -28,6 +28,7 @@ import { RxjsInteropComponent } from "./rxjs-interop/rxjs-interop.component";
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
 
