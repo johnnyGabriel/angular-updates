@@ -8,12 +8,13 @@ describe('SignalInputsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SignalInputsComponent]
+      imports: [SignalInputsComponent],
     })
     .compileComponents();
 
     fixture = TestBed.createComponent(SignalInputsComponent);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('text', 'some text');
     fixture.detectChanges();
   });
 

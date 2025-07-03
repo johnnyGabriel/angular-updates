@@ -1,5 +1,4 @@
 import { Component, input, output } from '@angular/core';
-import { clear } from 'console';
 
 @Component({
   selector: 'app-signal-inputs',
