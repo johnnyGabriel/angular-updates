@@ -6,7 +6,7 @@
 @if (user.hasValue()) {
     <p>User data: {{ user.value() | json }}</p>
 } @else if (user.error()) {
-    <p>Error: {{ user.error() | json }}</p>
+    <p>Error: {{ user.error()?.message }}</p>
 } @else if (user.isLoading()) {
     <p>Loading...</p>
 } 
@@ -15,7 +15,7 @@
 @if (userRx.hasValue()) {
     <p>UserRx data: {{ userRx.value() | json }}</p>
 } @else if (userRx.error()) {
-    <p>Error: {{ userRx.error() | json }}</p>
+    <p>Error: {{ userRx.error()?.message }}</p>
 } @else if (userRx.isLoading()) {
     <p>Loading...</p>
 } 
@@ -24,7 +24,7 @@
 @if (userHttp.hasValue()) {
     <p>UserRx data: {{ userHttp.value() | json }}</p>
 } @else if (userHttp.error()) {
-    <p>Error: {{ userHttp.error() | json }}</p>
+    <p>Error: {{ userHttp.error()?.message }}</p>
 } @else if (userHttp.isLoading()) {
     <p>Loading...</p>
 } 
