@@ -1,9 +1,8 @@
-import { JsonPipe } from '@angular/common';
-import { Component, contentChild, effect, ElementRef, viewChild } from '@angular/core';
+import { Component, contentChild, ElementRef, viewChild } from '@angular/core';
 
 @Component({
   selector: 'app-signal-queries',
-  imports: [JsonPipe],
+  imports: [],
   templateUrl: './signal-queries.component.html',
   styleUrl: './signal-queries.component.css'
 })
