@@ -9,6 +9,11 @@ on:
   pull_request:
     branches: [ "main" ]
 
+permissions: 
+  id-token: write
+  contents: read
+  pages: write
+
 jobs:
   build:
 
@@ -27,5 +32,25 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-    - run: npm run build --if-present
+    - name: Build static files
+      id: build
+      run: npm run build --if-present
     - run: npm test
+
+    - name: Upload static files as artifact
+      id: deployment
+      uses: actions/upload-pages-artifact@v3 # or specific "vX.X.X" version tag for this action
+      with:
+        path: /home/runner/work/angular-updates/angular-updates/dist/angular-updates/browser
+
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
