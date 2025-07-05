@@ -1,0 +1,1 @@
+import{Va as o,Wa as p,gb as a,ua as n}from"./chunk-ZENDDBUM.js";var m=class t{constructor(){window.alert("component loaded")}static \u0275fac=function(e){return new(e||t)};static \u0275cmp=n({type:t,selectors:[["app-example"]],decls:2,vars:0,template:function(e,i){e&1&&(o(0,"p"),a(1,"component template!"),p())},encapsulation:2})};export{m as ExampleComponent};
