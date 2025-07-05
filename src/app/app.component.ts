@@ -41,7 +41,7 @@ export class AppComponent {
   constructor() {}
 
   handleCustomEvent(e: string) {
-    console.log('Custom event received:', e);
+    window.alert(`Custom event received: ${e}`);
   }
 
 }

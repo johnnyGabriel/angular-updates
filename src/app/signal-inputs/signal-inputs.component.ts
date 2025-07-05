@@ -13,16 +13,8 @@ export class SignalInputsComponent {
 
   readonly customEvent = output<string>();
 
-  timer: any;
-
-  constructor() {
-    this.timer = setTimeout(() => {
-      this.customEvent.emit('Custom event triggered from SignalInputsComponent');
-    }, 3000);
-  }
-
-  ngOnDestroy() {
-    clearTimeout(this.timer);
+  triggerOutput() {
+    this.customEvent.emit('Custom event triggered from SignalInputsComponent');
   }
 
 }
